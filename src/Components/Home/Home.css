@@ -1,0 +1,21 @@
+.search-bar{
+    width: 90%;
+    padding-top: 100px;
+    margin: 0px auto;
+    display: flex;
+    justify-content: center;
+}
+.home-container{
+    background-color:#f1f2f4;
+}
+.search-bar input{
+    width: 400px;
+    height: 30px;
+    outline: none;
+    border: none;
+    text-align: center;
+    border-radius: 5px;
+}
+.search-bar button{
+    height: 40px;
+}

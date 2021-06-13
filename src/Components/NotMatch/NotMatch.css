@@ -1,0 +1,14 @@
+.error-container{
+    border: 1px solid gray;
+    box-shadow: 5px 5px 10px gray;
+    border-radius: 15px;
+    padding: 40px;
+    width: 30px;
+}
+.error-dev{
+    height: 10000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
