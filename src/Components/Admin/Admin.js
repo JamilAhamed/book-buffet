@@ -5,13 +5,15 @@ import EditBooks from './EditBooks/EditBooks';
 import { faEdit, faPlus, faTasks } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ManageBooks from './ManageBooks/ManageBooks';
+
 const Admin = () => {
     const [selectedBook, setSelectedBook] = useState([]);
     const [editId, setEditId] = useState();
     const [showInput, setShowInput] = useState(false)
     const [option, setOption] = useState("add");
+
     const handleDelete = (id) => {
-        const url = `http://localhost:3000/deleteBook/${id}`;
+        const url = `http://localhost:5000/deleteBook/${id}`;
         fetch(url, {
             method: "DELETE"
         })
@@ -24,21 +26,19 @@ const Admin = () => {
                 }
             })
     }
-
     useEffect(() => {
-        const url = `http://localhost:3000/book/${editId}`;
+        const url = `http://localhost:5000/book/${editId}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setSelectedBook(data[0]))
     }, [editId]);
-
 
     const handleEdit = (id) => {
         if (id) {
             setShowInput(true);
             setEditId(id);
             setOption("edit")
-            
+
         }
     }
     return (
@@ -46,8 +46,9 @@ const Admin = () => {
             <div className="admin-nav">
                 <h1>Admin Panel</h1>
                 <span className={option === "manage" && "selected"} onClick={() => setOption("manage")}>
-                    <FontAwesomeIcon icon={faTasks} size="1x" />                    Manage Books
-                    </span>
+                    <FontAwesomeIcon icon={faTasks} size="1x" />
+                     Manage Books
+                     </span>
 
                 <span className={option === "add" && "selected"} onClick={() => setOption("add")}>
                     <FontAwesomeIcon icon={faPlus} size="1x" />  Add Book</span>
@@ -62,7 +63,7 @@ const Admin = () => {
                 }
                 {
                     option === "edit" &&
-                    <EditBooks editId={editId}  showInput={showInput} setOption={setOption} handleEdit={handleEdit} selectedBook={selectedBook} ></EditBooks>
+                    <EditBooks editId={editId} showInput={showInput} setOption={setOption} handleEdit={handleEdit} selectedBook={selectedBook} ></EditBooks>
                 }
                 {
                     option === "manage" &&
@@ -82,8 +83,6 @@ const Admin = () => {
                     </div>
                 }
             </div>
-
-
         </div>
     );
 };

@@ -4,12 +4,14 @@ import ManageBooks from '../ManageBooks/ManageBooks';
 import './EditBooks.css'
 
 const EditBooks = (props) => {
+
     const { register, handleSubmit, watch, errors } = useForm();
     const { handleEdit, showInput, selectedBook, editId, setOption } = props;
     const { name, author, price } = selectedBook;
+
     const onSubmit = data => {
         const editedData = { ...data };
-        fetch(`http://localhost:3000/edit/${editId}`, {
+        fetch(`http://localhost:5000/edit/${editId}`, {
             method: "PATCH",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(editedData)
@@ -32,7 +34,7 @@ const EditBooks = (props) => {
                     {
                         showInput &&
                         <div className="update-div">
-                            <small style={{ color: "teal", fontWeight: "bold" }}>Previous Name:</small>
+                            <small style={{ color: "hotPink", fontWeight: "bold" }}>Previous Name:</small>
                             <br />
                             <small>{name}</small>
                             <br />
@@ -45,7 +47,7 @@ const EditBooks = (props) => {
                     <br />
                     {showInput &&
                         <div className="update-div">
-                            <small style={{ color: "teal", fontWeight: "bold" }}>Previous author:</small>
+                            <small style={{ color: "hotPink", fontWeight: "bold" }}>Previous author:</small>
                             <br />
                             <small>{author}</small>
                             <br />
@@ -56,7 +58,8 @@ const EditBooks = (props) => {
                 <div>
                     <b> Price</b>
                     <br />
-                    {showInput &&
+                    {
+                        showInput &&
                         <div className="update-div">
                             <small style={{ color: "teal", fontWeight: "bold" }}>Previous Price:</small>
                             <br />
@@ -64,9 +67,7 @@ const EditBooks = (props) => {
                             <br />
                             <input type="text" name="price" ref={register} />
                         </div>
-
                     }
-
                 </div>
                 <div>
                     <b> Action</b>
@@ -78,7 +79,6 @@ const EditBooks = (props) => {
                     }
                 </div>
             </form></ManageBooks>
-
     );
 };
 

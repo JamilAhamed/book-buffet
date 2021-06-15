@@ -1,0 +1,54 @@
+.book-card{
+    width: 280px;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #fff;
+    border: 2px solid #fff;
+    box-shadow: 5px 5px 10px hotpink;
+    display: grid;
+    grid-template-rows: 1fr;
+    margin: 0 auto;
+}
+.book-card:hover{
+    border: 2px solid hotpink;
+    box-shadow: 10px 10px 15px hotpink;
+}
+.book-card img{
+    margin: 0 auto;
+    width: 220px;
+    height: 250px;
+    padding: 10px;
+}
+.book-card  button{
+    background-color: hotpink;
+    color: white;
+    width: 100px;
+    padding:10px;
+    height: 50px;
+    font-size: large;
+    border-radius:10px;
+    border: 1px solid white;
+    outline: none;
+}
+
+.book-card button:hover{
+    background-color:white;
+    color: hotpink;
+    border: 1px solid hotpink;
+    opacity: 0.7;
+outline: none;
+    
+}
+.card-footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.book-card p{
+    padding: 10px 0;
+}
+
+@media(max-width:1100px){
+  
+}

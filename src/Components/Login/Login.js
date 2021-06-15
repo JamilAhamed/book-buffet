@@ -1,6 +1,6 @@
 import { faEnvelope, faLock, faUser, faUserLock } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGoogle, faFacebook, faGithub } from '@fortawesome/free-brands-svg-icons';
+import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 import React, { useContext, useState } from 'react';
 import firebaseConfig from './firebase.config';
 import "firebase/auth";
@@ -8,6 +8,8 @@ import "./Login.css"
 import firebase from "firebase/app";
 import { UserContext } from '../../App';
 import { useHistory, useLocation } from 'react-router';
+
+
 if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
 } else {
@@ -31,7 +33,7 @@ const Login = () => {
         firebase.auth()
             .signInWithPopup(provider)
             .then((result) => {
-                console.log(result);
+                // console.log(result);
                 const { email, displayName } = result.user;
                 const user = { email, name: displayName }
                 setLoggedInUser(user);
@@ -41,8 +43,8 @@ const Login = () => {
                 newUserInfo.error = error.message;
                 setLoggedInUser(newUserInfo);
             });
-
     }
+
     const handleChange = (event) => {
         let isFieldValid = true;
         let isPasswordMatched = false;
@@ -90,7 +92,6 @@ const Login = () => {
                     newUserInfo.error = error.message;
                     setLoggedInUser(newUserInfo);
                     alert(`${error.message}`)
-                    
                 });
         }
         if (!newUser && user.email && user.password) {
@@ -102,7 +103,6 @@ const Login = () => {
                     setLoggedInUser(newUserInfo);
                     alert("login successfully")
                     history.replace(from)
-
                 })
                 .catch((error) => {
                     const newUserInfo = {};
@@ -113,10 +113,8 @@ const Login = () => {
         }
         event.preventDefault();
     }
-
     const updateUserName = name => {
         var user = firebase.auth().currentUser;
-
         user.updateProfile({
             displayName: name
         }).then(function () {
@@ -178,7 +176,6 @@ const Login = () => {
                         }
                         
                     </div>
-                    
                     {
                         !newUser &&
                         <div className="social-links" onClick={handleGoogleSignIn}>
